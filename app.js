@@ -5,16 +5,16 @@ const searchItem = async () => {
   try {
     const res = await fetch(url);
     const data = await res.json();
-    displayItems(data.meals);
+    showItems(data.meals);
   } catch (error) {
     showErrorMsg('Item not found! Try putting a different name');
   }
 }
 
-const displayItems = items => {
+const showItems = items => {
   const itemContainer = document.querySelector('#food-item-container .row');
   itemContainer.innerHTML = '';
-  items.forEach((item) => {
+  items.forEach(item => {
     const mealDiv = document.createElement('div');
     mealDiv.className = 'col-md-3 my-2';
     mealDiv.innerHTML = `
@@ -23,13 +23,13 @@ const displayItems = items => {
                 <div class="card-body">
                   <h5 class="text-center">${item.strMeal}</h5>
                 </div>
-            </div>${showModal(item)}`;
+            </div>${showInfo(item)}`;
 
     itemContainer.appendChild(mealDiv);
   });
 }
 
-const showModal = item => {
+const showInfo = item => {
   return `<div class="modal fade" id="itemInfo-${item.idMeal}" tabindex="-1" aria-labelledby="itemInfo-${item.idMeal}Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -40,18 +40,11 @@ const showModal = item => {
           <div class="modal-body">
             <img src=${item.strMealThumb} class="img-fluid img-thumbnail my-4">
             <h4 class="text-center mx-3 text-success">Ingredients List</h4>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient1 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient2 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient3 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient4 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient5 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient6 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient7 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient8 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient9 || '-'}</div>
-            <div><i class="fas fa-check-square"></i> ${item.strIngredient10 || '-'}</div>
-            <h3 class="text-center text-success">Instructions</h3>
-            <div> ${item.strInstructions}</div>
+            <div><i class="fas fa-check-square"></i> ${item.strIngredient1}</div>
+            <div><i class="fas fa-check-square"></i> ${item.strIngredient2}</div>
+            <div><i class="fas fa-check-square"></i> ${item.strIngredient3}</div>
+            <div><i class="fas fa-check-square"></i> ${item.strIngredient4}</div>
+            <div><i class="fas fa-check-square"></i> ${item.strIngredient5}</div>
           </div>
         </div>
       </div>
