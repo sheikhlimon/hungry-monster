@@ -2,10 +2,13 @@
 const searchItem = async () => {
   const searchText = document.getElementById('search-term').value;
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
-
-  const res = await fetch(url);
-  const data = await res.json();
-  displayItems(data.meals);
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    displayItems(data.meals);
+  } catch (error) {
+    showErrorMsg('Item not found! Try putting a different name');
+  }
 }
 
 const displayItems = items => {
@@ -53,6 +56,12 @@ const showModal = item => {
         </div>
       </div>
     </div>`
+}
+
+// show error message
+const showErrorMsg = message => {
+  const errorMsgContainer = document.getElementById('errorMsg');
+  errorMsgContainer.innerHTML = `<h1 class="text-center text-warning">${message}</h1>`;
 }
 
 
