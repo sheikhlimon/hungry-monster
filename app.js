@@ -1,15 +1,12 @@
 // load search data from api
-const searchItem = async () => {
+const searchItem = () => {
   const searchText = document.getElementById('search-meal').value;
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    showItems(data.meals);
-  } catch (error) {
-    showErrorMsg('Item not found! Try putting a different name');
-  }
+  fetch (url) 
+  .then (res => res.json())
+  .then (data => showItems(data.meals));
 }
+
 //show items when searched
 const showItems = items => {
   const itemContainer = document.querySelector('#food-item-container .row');
@@ -33,13 +30,9 @@ const showInfo = item => {
   return `<div class="modal fade" id="itemInfo-${item.idMeal}" tabindex="-1" aria-labelledby="itemInfo-${item.idMeal}Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title text-center" id="itemInfo-${item.idMeal}Label">${item.strMeal}</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
           <div class="modal-body">
-            <img src=${item.strMealThumb} class="img-fluid img-thumbnail my-4">
-            <h4 class="text-center mx-3 text-success">Ingredients List</h4>
+            <img src=${item.strMealThumb} class="img-fluid my-4">
+            <h4 class="text-center mx-3 text-success">Ingredients</h4>
             <div><i class="fas fa-check-square"></i> ${item.strIngredient1}</div>
             <div><i class="fas fa-check-square"></i> ${item.strIngredient2}</div>
             <div><i class="fas fa-check-square"></i> ${item.strIngredient3}</div>
@@ -50,13 +43,3 @@ const showInfo = item => {
       </div>
     </div>`
 }
-
-// show error message
-const showErrorMsg = message => {
-  const errorMsgContainer = document.getElementById('errorMsg');
-  errorMsgContainer.innerHTML = `<h1 class="text-center text-warning">${message}</h1>`;
-}
-
-
-
-
