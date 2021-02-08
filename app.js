@@ -10,7 +10,7 @@ const searchItem = async () => {
     showErrorMsg('Item not found! Try putting a different name');
   }
 }
-
+//show items when searched
 const showItems = items => {
   const itemContainer = document.querySelector('#food-item-container .row');
   itemContainer.innerHTML = '';
@@ -28,7 +28,7 @@ const showItems = items => {
     itemContainer.appendChild(mealDiv);
   });
 }
-
+//show extra information when clicked
 const showInfo = item => {
   return `<div class="modal fade" id="itemInfo-${item.idMeal}" tabindex="-1" aria-labelledby="itemInfo-${item.idMeal}Label" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
