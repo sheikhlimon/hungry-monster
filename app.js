@@ -21,7 +21,7 @@ const displayItems = items => {
             <div class="card shadow mb-5 bg-white custom-rounded" data-bs-toggle="modal" data-bs-target="#itemInfo-${item.idMeal}">
               <img class="card-img-top" src= "${item.strMealThumb}">
                 <div class="card-body">
-                  <h5 class="text-center meal-name">${item.strMeal}</h5>
+                  <h5 class="text-center">${item.strMeal}</h5>
                 </div>
             </div>${showModal(item)}`;
 
@@ -39,7 +39,7 @@ const showModal = item => {
           </div>
           <div class="modal-body">
             <img src=${item.strMealThumb} class="img-fluid img-thumbnail my-4">
-            <h4 class="text-center mx-3 text-primary">Ingredients List</h4>
+            <h4 class="text-center mx-3 text-success">Ingredients List</h4>
             <div><i class="fas fa-check-square"></i> ${item.strIngredient1 || '-'}</div>
             <div><i class="fas fa-check-square"></i> ${item.strIngredient2 || '-'}</div>
             <div><i class="fas fa-check-square"></i> ${item.strIngredient3 || '-'}</div>
@@ -50,7 +50,7 @@ const showModal = item => {
             <div><i class="fas fa-check-square"></i> ${item.strIngredient8 || '-'}</div>
             <div><i class="fas fa-check-square"></i> ${item.strIngredient9 || '-'}</div>
             <div><i class="fas fa-check-square"></i> ${item.strIngredient10 || '-'}</div>
-            <h3 class="text-center text-primary">Instructions</h3>
+            <h3 class="text-center text-success">Instructions</h3>
             <div> ${item.strInstructions}</div>
           </div>
         </div>
