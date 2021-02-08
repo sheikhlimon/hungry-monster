@@ -1,6 +1,6 @@
 // load search data from api
 const searchItem = async () => {
-  const searchText = document.getElementById('search-term').value;
+  const searchText = document.getElementById('search-meal').value;
   const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
   try {
     const res = await fetch(url);
